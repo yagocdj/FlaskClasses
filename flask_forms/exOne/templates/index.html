@@ -1,0 +1,17 @@
+{# INDEX.HTML #}
+<p>
+{% if breed %}
+The breed you entered is {{breed}}
+Updated it in the form below:
+{% else %}
+Please enter your breed:
+{% endif %}
+</p>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.breed.label }}{{ form.breed(class='some-css-class') }}
+    {{ form.submit() }}
+    {# style the form using the following part: form.breed(class='some-css-class') #}
+    
+</form>
