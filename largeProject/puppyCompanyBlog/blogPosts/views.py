@@ -42,7 +42,7 @@ def blog_post(blog_post_id):
 def update(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
 
-    if blog_post.author is not current_user:
+    if blog_post.author != current_user:
         abort(403)
 
     form = BlogPostForm()
@@ -66,7 +66,7 @@ def update(blog_post_id):
 def delete_post(blog_post_id):
 
     blog_post = BlogPost.query.get_or_404(blog_post_id)
-    if blog_post.author is not current_user:
+    if blog_post.author != current_user:
         abort(403)
 
     db.session.delete(blog_post)
