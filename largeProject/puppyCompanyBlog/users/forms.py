@@ -19,11 +19,11 @@ class RegistrationForm(FlaskForm):
     pass_confirm = PasswordField('Confirm password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
-    def validate_email(self):
+    def validate_email(self, email):
         if User.query.filter_by(email=self.email.data).first():
             raise ValidationError('Your email has been registered already!')
 
-    def validate_username(self):
+    def validate_username(self, username):
         if User.query.filter_by(username=self.username.data).first():
             raise ValidationError('Your username has been registered already!')
 

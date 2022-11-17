@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     
     __tablename__ = 'users'
 
-    id = db.Column(db.Interger, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     profile_image = db.Column(db.String(64), nullable=False, default='default_profile.png')
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
@@ -37,7 +37,7 @@ class BlogPost(db.Model, UserMixin):
     users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.Foreignkey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)

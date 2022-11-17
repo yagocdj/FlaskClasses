@@ -67,7 +67,7 @@ def account():
 
     if form.validate_on_submit():
         
-        if form.pic.data:
+        if form.picture.data:
             username = current_user.username
             pic = add_profile_pick(form.picture.data, username)
             current_user.profile_image = pic
